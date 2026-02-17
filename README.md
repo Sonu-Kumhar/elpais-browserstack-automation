@@ -95,13 +95,15 @@ Outputs:
 
 # ⚙️ Setup Instructions
 
-## 1️⃣ Clone Repository
 
 ```bash
+1️⃣ Clone Repository
 git clone <your-repo-url>
 cd elpais-browserstack-automation
+
 2️⃣ Install Dependencies
 npm install
+
 3️⃣ Configure Environment Variables
 Create .env file using .env.example:
 
@@ -110,6 +112,7 @@ BROWSERSTACK_ACCESS_KEY=your_access_key
 RUN_MODE=browserstack
 To run locally:
 RUN_MODE=local
+
 4️⃣ Run Project
 npm run dev
 🧪 Execution Modes
@@ -125,7 +128,8 @@ browserstack	Runs 5 parallel sessions on BrowserStack
 ✔ Cloud test reporting
 
 📊 Project Highlights
-5 Parallel Cloud Sessions
+
+5️⃣ Parallel Cloud Sessions
 
 Cross Platform Testing
 
