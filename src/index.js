@@ -1,13 +1,9 @@
-const { createLocalDriver } = require("./driver/driverFactory");
 const { navigateToOpinion } = require("./scraper/navigation");
 const { scrapeArticles } = require("./scraper/opinionScraper");
 const { translateToEnglish } = require("./services/translation.service");
 const { analyzeWordFrequency } = require("./services/textAnalysis.service");
 
-
-(async function main() {
-  const driver = await createLocalDriver();
-
+async function runTestFlow(driver) {
   try {
     console.log("Opening Opinion Section...");
     await navigateToOpinion(driver);
@@ -21,16 +17,8 @@ const { analyzeWordFrequency } = require("./services/textAnalysis.service");
       console.log(`${index + 1}. ${article.title}`);
     });
 
-    // 🔥 Translate titles
     console.log("\nTranslated Titles (English):\n");
 
-    for (let i = 0; i < articles.length; i++) {
-      const translated = await translateToEnglish(articles[i].title);
-      console.log(`${i + 1}. ${translated}`);
-    }
-
-
-    // Collect translated titles
     const translatedTitles = [];
 
     for (let i = 0; i < articles.length; i++) {
@@ -39,7 +27,6 @@ const { analyzeWordFrequency } = require("./services/textAnalysis.service");
       console.log(`${i + 1}. ${translated}`);
     }
 
-    // 🔥 Analyze repeated words
     const repeated = analyzeWordFrequency(translatedTitles);
 
     console.log("\nRepeated Words (>2 times):\n");
@@ -52,10 +39,9 @@ const { analyzeWordFrequency } = require("./services/textAnalysis.service");
       }
     }
 
-
   } catch (error) {
     console.error("Error occurred:", error);
-  } finally {
-    await driver.quit();
   }
-})();
+}
+
+module.exports = { runTestFlow };
