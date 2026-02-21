@@ -139,6 +139,6 @@ Translation + Text Analytics Layer
 
 Real Browser Cloud Execution
 
-👨‍💻 Author
+👨‍💻 Developer
 Sonu Kumhar
-Automation Engineer | Web Scraping | Cross Browser Testing
+Full Stack Developer | Web Scraping | Cross Browser Testing
